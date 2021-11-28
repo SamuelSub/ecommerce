@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../model/productSchema');
 const mongoose = require('mongoose');
+const { body, validationResult } = require('express-validator');
 
 // GET all products
 router.get('/', async (req, res) => {
@@ -16,8 +17,15 @@ router.get('/:id', async (req, res) => {
 })
 
 // POST (add a product)
-router.post('/', async (req, res) => {
-
+router.post('/', 
+    body('name').isLength({min: 3}),
+    body('price').isLength({min: 1, max: 10}),
+    body('description').notEmpty(),
+  async (req, res) => {
+  const errors = validationResult(req);
+  if(!errors.isEmpty()) {
+    return res.status(400).json({errors: errors.array() })
+  }
   const prodData = {
     name: req.body.name,
     price: req.body.price,
@@ -33,8 +41,15 @@ router.post('/', async (req, res) => {
 })
 
 // PUT (update a product)
-router.put('/:id', async (req, res) => {
-  
+router.put('/:id',
+    body('name').isLength({min: 3}),
+    body('price').isLength({min: 1, max: 10}),
+    body('description').notEmpty(),
+  async (req, res) => {
+  const errors = validationResult(req);
+  if(!errors.isEmpty()) {
+    return res.status(400).json({errors: errors.array() })
+  }
   try {
     const data = await Product.findByIdAndUpdate(req.params.id, {
       name: req.body.name,
