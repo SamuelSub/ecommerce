@@ -1,10 +1,10 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const User = require('../model/userSchema');
+const jwt = require('jsonwebtoken');
 
-exports.login = async (req, res, next) => {
+exports.login = async (req, res) => {
   try {
     // destructure email and password vars from req.body
     const { email, password } = req.body;
@@ -17,12 +17,21 @@ exports.login = async (req, res, next) => {
       const validPass = await bcrypt.compare(password, user.password);
 
       if(validPass) {
-        res.send(user);
+
+        // Create token with the payload being the user id and the user email then return the user and the token so the client can save the token in their local storage
+        const token = await jwt.sign({
+          payload: { id: user._id, email: user.email }
+        }, process.env.SECRET_TOKEN, { expiresIn: '2h' })
+
+        res.send({
+          user,
+          token
+        });
+
       } else {
         res.send('Password Incorrect')
       }
 
-      // next();
     } else {
       res.send('User Not Found');
     }
@@ -48,8 +57,16 @@ exports.register = async (req, res) => {
     // save password to db
     await user.save();
 
-    res.send(user);
-    
+    // Create token with the payload being the user id and the user email then return the user and the token so the client can save the token in their local storage
+    const token = await jwt.sign({
+      payload: { id: user._id, email: user.email }
+    }, process.env.SECRET_TOKEN, { expiresIn: '2h' })
+
+    res.send({
+      user,
+      token
+    });
+
   } catch (error) {
     res.send(error)
   }

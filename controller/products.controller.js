@@ -1,4 +1,6 @@
 const express = require('express');
+const Product = require('../model/productSchema');
+const mongoose = require('mongoose');
 
 // GET all products
 exports.getAllProducts = async (req, res) => {
