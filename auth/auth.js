@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
     res.send('No token provided')
   } else {
     jwt.verify(token, process.env.SECRET_TOKEN, (err, decoded) => {
-      console.log(decoded.email)
+      console.log(decoded)
     })
     next();
   }

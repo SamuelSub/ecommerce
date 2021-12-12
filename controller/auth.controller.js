@@ -31,7 +31,6 @@ exports.login = async (req, res) => {
       } else {
         res.send('Password Incorrect')
       }
-
     } else {
       res.send('User Not Found');
     }
