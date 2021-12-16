@@ -23,7 +23,8 @@ exports.addProduct = async (req, res) => {
   const prodData = {
     name: req.body.name,
     price: req.body.price,
-    description: req.body.description
+    description: req.body.description,
+    imageLink: req.body.imageLink
   }
 
   const prod = await new Product(prodData); 

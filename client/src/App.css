@@ -11,6 +11,7 @@ nav {
   width: 100vw;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   padding-left: 5rem;
@@ -32,7 +33,29 @@ nav ul li {
   margin: 5rem;
 }
 
+.products-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.filter-container {
+  margin: 2rem;
+}
+
+.filter-container h1 {
+  margin-bottom: 2rem;
+}
+
+.filter-container ul {
+  list-style-type: none;
+}
+
+.product-list-container h2 {
+  margin: 2rem;
+}
+
 .products-list {
+  justify-content: space-evenly;
   display: flex;
   flex-wrap: wrap;
   color: #1d3557;
@@ -48,7 +71,12 @@ nav ul li {
   box-shadow: 2px 2px 2px honeydew;
 }
 
+.product-card img {
+  width: 100%;
+}
+
 .product-card:hover {
   transition: 200ms ease-in-out;
   transform: translateY(-1rem);
+  transform: scale(102%);
 }

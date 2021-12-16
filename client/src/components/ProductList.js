@@ -11,7 +11,7 @@ const ProductList = () => {
   }
 
   return (
-    <Fragment> 
+    <div className='product-list-container'> 
       <h2 onClick={() => {getProducts()}}>List of Products</h2>
       <div className='products-list'>
         {products ? products.map((item) => (
@@ -19,10 +19,11 @@ const ProductList = () => {
             <h2>{item.name}</h2>
             <h3>{item.price}</h3>
             <h4>{item.description}</h4>
+            <img src={item.imageLink}></img>
           </div>
         )) : 'no'}
       </div>
-    </Fragment>
+    </div>
   )
 }
 
