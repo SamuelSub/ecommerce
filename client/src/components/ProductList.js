@@ -1,27 +1,31 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const ProductList = () => {
 
   const [products, setProducts] = useState();
 
-  const getProducts = () => {
-    fetch('/api/products').then(response => {
-      return response.json()
-    }).then(data => setProducts(data))
+  const getProducts = async () => {
+    const call = await fetch('/api/products')
+    const res = await call.json();
+    setProducts(res);
   }
+
+  useEffect(() => {
+    getProducts();
+  }, [])
 
   return (
     <div className='product-list-container'> 
-      <h2 onClick={() => {getProducts()}}>List of Products</h2>
+      <h2>List of Products</h2>
       <div className='products-list'>
         {products ? products.map((item) => (
-          <div className='product-card'>
+          <div className='product-card' key={item._id}>
             <h2>{item.name}</h2>
             <h3>{item.price}</h3>
             <h4>{item.description}</h4>
             <img src={item.imageLink}></img>
           </div>
-        )) : 'no'}
+        )) : ''}
       </div>
     </div>
   )

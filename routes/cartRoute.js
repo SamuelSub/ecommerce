@@ -4,15 +4,15 @@ const router = express.Router();
 const cartController = require('../controller/cart.controller');
 
 // GET users cart
-router.get('/', auth, cartController.getUsersCart);
+router.get('/', cartController.getUsersCart);
 
 // POST add item to users cart
-router.post('/', auth, cartController.addItemToCart);
+router.post('/', cartController.addItemToCart);
 
 // PUT update an item in users cart
-router.get('/', auth, cartController.updateItemInCart);
+router.put('/', cartController.updateItemInCart);
 
 // DELETE remove item from users cart
-router.get('/', auth, cartController.removeItemFromCart);
+router.get('/', cartController.removeItemFromCart);
 
 module.exports = router;

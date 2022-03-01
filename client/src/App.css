@@ -7,6 +7,7 @@
   font-family: 'Nunito', sans-serif;
 }
 
+/* Navigation styling */
 nav {
   width: 100vw;
   display: flex;
@@ -20,6 +21,13 @@ nav {
   background-color: #a8dadc;
 }
 
+.logo,
+.register-link,
+.login-link {
+  color: white;
+  text-decoration: none;
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -28,6 +36,8 @@ nav ul {
 nav ul li {
   margin-right: 1rem;
 }
+
+/* End of navigation styling */
 
 .main-section {
   margin: 5rem;
@@ -75,8 +85,9 @@ nav ul li {
   width: 100%;
 }
 
-.product-card:hover {
-  transition: 200ms ease-in-out;
-  transform: translateY(-1rem);
-  transform: scale(102%);
+.product-card:hover,
+.product-card h2:hover {
+  transition: 300ms ease-in-out;
+  /* transform: translateY(-1rem); */
+  transform: scale(1.04);
 }
