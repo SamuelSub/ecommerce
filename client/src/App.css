@@ -23,7 +23,9 @@ nav {
 
 .logo,
 .register-link,
-.login-link {
+.login-link,
+.products-link,
+.cart-link {
   color: white;
   text-decoration: none;
 }
@@ -39,8 +41,31 @@ nav ul li {
 
 /* End of navigation styling */
 
+/* Filter Products section */
+
+.price-list h2,
+.brands-list h2 {
+  font-weight: bold;
+}
+
+/* End of filter products sections */
 .main-section {
-  margin: 5rem;
+  width: 90vw;
+  margin: auto;
+}
+
+.categories ul {
+  display: flex;
+  list-style: none;
+  align-content: center;
+  justify-content: center;
+  margin-top: 2rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.categories ul li {
+  margin: 1rem;
 }
 
 .products-container {
@@ -85,9 +110,7 @@ nav ul li {
   width: 100%;
 }
 
-.product-card:hover,
-.product-card h2:hover {
+.product-card:hover {
   transition: 300ms ease-in-out;
-  /* transform: translateY(-1rem); */
   transform: scale(1.04);
 }

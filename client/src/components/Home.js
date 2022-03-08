@@ -5,7 +5,12 @@ import ProductList from './ProductList'
 const Home = () => {
   return (
     <div className='main-section'>
-      <h1>Products</h1>
+      <div className='categories'>
+        <ul>
+          <li>Shoes</li>
+          <li>Clothes</li>
+        </ul>
+      </div>
       <div className='products-container'>
         <FilterProducts />
         <ProductList />
