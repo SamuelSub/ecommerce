@@ -1,17 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Text, Flex, ListItem, Spacer, UnorderedList } from '@chakra-ui/react';
 
 const Navbar = () => {
   return (
-    <nav>
-      <h1><Link to='/' className='logo'>Samuel's Shop</Link></h1>
-      <ul>
-        <li><Link to='register' className='register-link'>Sign Up</Link></li>
-        <li><Link to='login' className='login-link'>Log In</Link></li>
-        <li><Link to='/' className='products-link'>Products</Link></li>
-        <li><Link to='/cart' className='cart-link'>Cart</Link></li>
-      </ul>
-    </nav>
+    <Flex w='100%' bg='gray.400' p='4' boxShadow='lg' position='fixed' top='0' zIndex='50'>
+      <Flex w='90%' m='auto' align='space-between' color='white' align='center'>
+        <Text fontSize='2xl'><Link to='/'>Samuel's Shop</Link></Text>
+        <Spacer />
+          <UnorderedList styleType='none' alignContent='flex'>
+            <Flex>
+              <ListItem ml='2'><Link to='register'>Sign Up</Link></ListItem>
+              <ListItem ml='2'><Link to='login'>Log In</Link></ListItem>
+              <ListItem ml='2'><Link to='/'>Products</Link></ListItem>
+              <ListItem ml='2'><Link to='/cart'>Cart</Link></ListItem>
+            </Flex>
+          </UnorderedList>
+      </Flex>
+    </Flex>
   )
 }
 

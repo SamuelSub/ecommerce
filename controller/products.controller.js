@@ -4,14 +4,51 @@ const mongoose = require('mongoose');
 
 // GET all products
 exports.getAllProducts = async (req, res) => {
-  const data = await Product.find();
-  res.send(data)
+  let data;
+  if(Object.keys(req.body).length === 0) {
+    data = await Product.find();
+    res.send(data)
+  } else {
+    console.log(req)
+    data = await Product.find(); 
+    res.send(data);
+  }
 }
 
 // GET single product
 exports.getSingleProduct = async (req, res) => {
   const data = await Product.findById(req.params.id)
   res.send(data);
+}
+
+// Filter products
+exports.filterProducts = async (req, res) => {
+  const params = {
+    price: req.query.price,
+    brands: req.query.brands
+  };
+  let firstPrice;
+  let lastPrice;
+  if(params.price === 'upto40') {
+    firstPrice = 0;
+    lastPrice = 40;
+  } else if (params.price === '40to80') {
+    firstPrice = 40;
+    lastPrice = 80;
+  } else if (params.price === '80to120') {
+    firstPrice = 80;
+    lastPrice = 120;
+  } else if (params.price === '120to160') {
+    firstPrice = 120;
+    lastPrice = 160;
+  } else {
+    firstPrice = 160;
+    lastPrice = 1000000;
+  }
+  const filteredData = await Product.find(
+    { $and: [ { price: { $gte: firstPrice } }, { price: { $lte: lastPrice } } ] }
+  );
+  res.send(filteredData)
 }
 
 // POST create new product

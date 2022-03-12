@@ -6,6 +6,9 @@ const productController = require('../controller/products.controller');
 // GET all products
 router.get('/', productController.getAllProducts);
 
+// GET filtered products
+router.get('/filters', productController.filterProducts);
+
 // GET single product
 router.get('/:id', productController.getSingleProduct);
 

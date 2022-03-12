@@ -1,21 +1,24 @@
 import React, { useContext} from 'react';
 import { productsContext } from '../contexts/productsContext';
+import { Box, Button, Heading, Image, Stack, Text } from '@chakra-ui/react';
 
 const ProductItem = ({ item }) => {
 
   const { state, dispatch } = useContext(productsContext);
 
   return (
-    <div>
-      <div className='product-card' key={item._id}>
-        <h2 onClick={() => console.log(state)}>{item.name}</h2>
-        <h3>{item.price}</h3>
-        <h4>{item.description}</h4> 
-        <img src={item.imageLink} alt=''></img>
-        <button onClick={() => dispatch({type: 'remove', payload: item._id})}>Remove</button>
-        <button onClick={() => dispatch({type: 'add', payload: item})}>Add To Cart</button>
-      </div>
-    </div>  
+    <Box key={item._id} h='100%' boxShadow='xl' borderRadius='sm' align='center'>
+      <Image src={item.imageLink} alt=''></Image>
+      <Box p='6'>
+        <Heading fontSize='md' onClick={() => console.log(state)}>{item.name}</Heading>
+        <Text>{`${item.price}$`}</Text>
+        <Text color='gray.500'>{item.description}</Text>
+        <Stack direction='row'>
+          {/* <Button onClick={() => dispatch({type: 'remove', payload: item._id})} colorScheme='red' variant='outline' size='sm'>Remove</Button> */}
+          <Button onClick={() => dispatch({type: 'add', payload: item})} colorScheme='green' variant='outline' size='sm' w='100%'>Add To Cart</Button>
+        </Stack>
+      </Box>
+    </Box>
   )
 }
 

@@ -1,3 +1,4 @@
+import { Box, Grid, GridItem, Heading } from '@chakra-ui/react';
 import React, { useContext } from 'react';
 import { productsContext } from '../contexts/productsContext';
 import ProductItem from './ProductItem';
@@ -7,14 +8,16 @@ const ProductList = () => {
   const { products } = useContext(productsContext);
 
   return (
-    <div className='product-list-container'> 
-      <h2>List of Products</h2>
-      <div className='products-list'>
+    <Box > 
+      <Heading fontSize='xl' mb='5'>Products</Heading>
+      <Grid templateColumns='repeat(3, 1fr)' gap={3}>
         {products ? products.map((item) => (
-          <ProductItem item={item} key={item._id}/>
+          <GridItem key={item._id} h='100%' borderRadius={5}>
+            <ProductItem item={item} key={item._id}/>
+          </GridItem>
         )) : ''}
-      </div>
-    </div>
+      </Grid>
+    </Box>
   )
 }
 
