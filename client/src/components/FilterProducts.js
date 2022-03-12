@@ -15,11 +15,11 @@ const FilterProducts = () => {
       <Heading fontSize='xl' mb='5' onClick={() => console.log(filters[0]['price'])}>Filters</Heading>
       <UnorderedList styleType='none' onClick={(e) => handleChange(e)}>
         <ListItem><Heading fontSize='md'>Price</Heading></ListItem>
-        <ListItem>Up to 40 <input type="checkbox" value='Up to 40'/></ListItem>
-        <ListItem>40-80 <input type="checkbox" value='40-80'/></ListItem>
-        <ListItem>80-120 <input type="checkbox" value='80-120'/></ListItem>
-        <ListItem>120-160 <input type="checkbox" value='120-160'/></ListItem>
-        <ListItem>Over 160 <input type="checkbox" value='Over 160'/></ListItem>
+        <ListItem>Up to 40 <input type="checkbox" value='upto40'/></ListItem>
+        <ListItem>40-80 <input type="checkbox" value='40to80'/></ListItem>
+        <ListItem>80-120 <input type="checkbox" value='80to120'/></ListItem>
+        <ListItem>120-160 <input type="checkbox" value='120to160'/></ListItem>
+        <ListItem>Over 160 <input type="checkbox" value='over160'/></ListItem>
       </UnorderedList>
       <UnorderedList styleType='none'>
         <ListItem><Heading fontSize='md'>Brands</Heading></ListItem>

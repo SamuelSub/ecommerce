@@ -8,13 +8,7 @@ const ProductsState = props => {
   const initialState = [];
   const filterProducts = [
     {
-      price: {
-        range0to40: false,
-        range40to80: false,
-        range80to120: false,
-        range120to160: false,
-        rangeOver160: false
-      }
+      price: 0
     },
     {
       brands: {
@@ -30,14 +24,16 @@ const ProductsState = props => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [filters, dispatchFilters] = useReducer(filterReducer, filterProducts);
 
-  const getProducts = async (params = null) => {
+  const getProducts = async (params) => {
+    let call;
     let res;
-    if(params === null) {
-      const call = await fetch('/api/products')
+    if(params[0].price === 0) {
+      call = await fetch('/api/products')
       res = await call.json();
-    } else if(params[0].price.range0to40){
-      console.log(true)
-      const call = await fetch(`/api/products`)
+    } 
+    
+    if(params[0].price !== 0) {
+      call = await fetch(`/api/products/filters?price=${params[0].price}`)
       res = await call.json();
     }
     return res
