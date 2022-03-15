@@ -45,9 +45,19 @@ exports.filterProducts = async (req, res) => {
     firstPrice = 160;
     lastPrice = 1000000;
   }
-  const filteredData = await Product.find(
-    { $and: [ { price: { $gte: firstPrice } }, { price: { $lte: lastPrice } } ] }
-  );
+
+  let filteredData
+  // Check if only price range query exists so it will filter only based on price
+  if(req.query.price) {
+    filteredData = await Product.find(
+      { $and: [ { price: { $gte: firstPrice } }, { price: { $lte: lastPrice } } ] }
+    );
+  }
+  // Check if only brand query exists so it will filter only based on brand
+  if(!req.query.price && req.query.brands) {
+    // for some reason brand search doesnt work while other properties work...
+    // filteredData = await Product.find({ brand: 'nike' });
+  }
   res.send(filteredData)
 }
 

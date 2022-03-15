@@ -6,36 +6,34 @@ import { filterReducer } from './filterReducer';
 const ProductsState = props => {
 
   const initialState = [];
-  const filterProducts = [
-    {
-      price: 0
-    },
-    {
-      brands: {
-        adidas: false,
-        nike: false,
-        underArmour: false,
-        rebook: false
-      }
-    }
-  ];
+  const filterProducts = {
+    price: 'all',
+    brands: []
+  };
 
   const [products, setProducts] = useState();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [filters, dispatchFilters] = useReducer(filterReducer, filterProducts);
 
-  const getProducts = async (params) => {
+  const getProducts = async () => {
     let call;
     let res;
-    if(params[0].price === 0) {
+
+    if(filters.price === 'all') {
       call = await fetch('/api/products')
       res = await call.json();
     } 
     
-    if(params[0].price !== 0) {
-      call = await fetch(`/api/products/filters?price=${params[0].price}`)
+    if(filters.price !== 'all') {
+      call = await fetch(`/api/products/filters?price=${filters.price}`);
       res = await call.json();
     }
+
+    if(filters.price === 'all' && filters.brands.length > 0) {
+      call = await fetch(`/api/products/filters?brands=${filters.brands}`);
+      res = await call.json();
+    }
+
     return res
   }
 
@@ -51,6 +49,7 @@ const ProductsState = props => {
     getProducts(filters)
       .then(res => setProducts(res))
       .catch(err => console.log(err))
+    console.log(filters)
   }, [filters])
 
   // Filter Products
