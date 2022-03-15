@@ -56,7 +56,7 @@ exports.filterProducts = async (req, res) => {
   // Check if only brand query exists so it will filter only based on brand
   if(!req.query.price && req.query.brands) {
     // for some reason brand search doesnt work while other properties work...
-    // filteredData = await Product.find({ brand: 'nike' });
+    filteredData = await Product.find({ brand: req.query.brands });
   }
   res.send(filteredData)
 }
@@ -70,6 +70,7 @@ exports.addProduct = async (req, res) => {
   const prodData = {
     name: req.body.name,
     price: req.body.price,
+    brand: req.body.brand,
     description: req.body.description,
     imageLink: req.body.imageLink
   }
