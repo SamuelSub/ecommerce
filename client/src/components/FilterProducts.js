@@ -21,12 +21,12 @@ const FilterProducts = () => {
         <ListItem>120-160 <input type="checkbox" value='120to160'/></ListItem>
         <ListItem>Over 160 <input type="checkbox" value='over160'/></ListItem>
       </UnorderedList>
-      <UnorderedList styleType='none'>
+      <UnorderedList styleType='none' onClick={(e) => handleChange(e)}>
         <ListItem><Heading fontSize='md'>Brands</Heading></ListItem>
-        <ListItem>Adidas <input type="checkbox"/></ListItem>
-        <ListItem>Nike <input type="checkbox"/></ListItem>
-        <ListItem>Under Armour <input type="checkbox"/></ListItem>
-        <ListItem>Reebok <input type="checkbox"/></ListItem>
+        <ListItem>Adidas <input type="checkbox" value='adidas'/></ListItem>
+        <ListItem>Nike <input type="checkbox" value='nike'/></ListItem>
+        <ListItem>Under Armour <input type="checkbox" value='under armour'/></ListItem>
+        <ListItem>New Balance <input type="checkbox" value='new balance'/></ListItem>
       </UnorderedList>
     </Box>
   )
