@@ -12,25 +12,30 @@ const ProductsState = props => {
   };
 
   const [products, setProducts] = useState();
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [cart, dispatchCart] = useReducer(reducer, initialState);
   const [filters, dispatchFilters] = useReducer(filterReducer, filterProducts);
 
   const getProducts = async () => {
     let call;
     let res;
-
+    // Fetch all the products 
     if(filters.price === 'all') {
       call = await fetch('/api/products')
       res = await call.json();
     } 
-    
+    // Filter only based on price
     if(filters.price !== 'all') {
       call = await fetch(`/api/products/filters?price=${filters.price}`);
       res = await call.json();
     }
-
+    // Filter only based on brand
     if(filters.price === 'all' && filters.brands.length > 0) {
       call = await fetch(`/api/products/filters?brands=${filters.brands}`);
+      res = await call.json();
+    }
+    // Filter based on price and brands
+    if(filters.price !== 'all' && filters.brands.length > 0) {
+      call = await fetch(`/api/products/filters?price=${filters.price}&brands=${filters.brands}`);
       res = await call.json();
     }
 
@@ -58,8 +63,8 @@ const ProductsState = props => {
     <productsContext.Provider value={{
       products,
       setProducts,
-      state,
-      dispatch,
+      cart,
+      dispatchCart,
       filters,
       dispatchFilters
     }}>

@@ -1,11 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { Input, Box, Button, Stack, Heading } from '@chakra-ui/react';
 
 const Register = () => {
   return (
-    <div>
-      <h2>Register</h2>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. A exercitationem recusandae facilis sapiente iure molestiae itaque voluptatem similique quaerat distinctio, fuga officia. Dolorum, adipisci reprehenderit, modi autem temporibus voluptates est ratione reiciendis, fuga corporis mollitia. Cumque deleniti molestias aliquam iure hic officiis commodi, corrupti, dolorem modi beatae, repellendus animi nulla!</p>
-    </div>
+    <Box m='8rem' align='center'>
+      <Heading m='4rem'>Register</Heading>
+      <Stack spacing={5}  m='auto' w='20rem'>
+        <Input placeholder='First Name' variant='flushed'></Input>
+        <Input placeholder='Last Name' variant='flushed'></Input>
+        <Input placeholder='Email Address' variant='flushed'></Input>
+        <Input placeholder='Password' variant='flushed'></Input>
+        <Input placeholder='Retype Password' variant='flushed'></Input>
+        <Button>Sign Up</Button>
+      </Stack>
+    </Box>
   )
 }
 
