@@ -1,4 +1,5 @@
 import React from 'react';
+import Cart from './Cart';
 import { Link } from 'react-router-dom';
 import { Text, Flex, ListItem, Spacer, UnorderedList } from '@chakra-ui/react';
 
@@ -13,7 +14,7 @@ const Navbar = () => {
               <ListItem ml='2'><Link to='register'>Sign Up</Link></ListItem>
               <ListItem ml='2'><Link to='login'>Log In</Link></ListItem>
               <ListItem ml='2'><Link to='/'>Products</Link></ListItem>
-              <ListItem ml='2'><Link to='/cart'>Cart</Link></ListItem>
+              <ListItem ml='2'><Cart /></ListItem>
             </Flex>
           </UnorderedList>
       </Flex>
