@@ -18,24 +18,34 @@ const ProductsState = props => {
   const getProducts = async () => {
     let call;
     let res;
+
     // Fetch all the products 
     if(filters.price === 'all') {
       call = await fetch('/api/products')
       res = await call.json();
     } 
+
     // Filter only based on price
     if(filters.price !== 'all') {
       call = await fetch(`/api/products/filters?price=${filters.price}`);
       res = await call.json();
     }
-    // Filter only based on brand
+
+    // Filter only based on brand or multiple brands
     if(filters.price === 'all' && filters.brands.length > 0) {
-      call = await fetch(`/api/products/filters?brands=${filters.brands}`);
+      call = await fetch(`/api/products/filters?brands=${filters.brands[0]}&brands=${filters.brands[1]}&brands=${filters.brands[2]}&brands=${filters.brands[3]}`);
       res = await call.json();
     }
+
     // Filter based on price and brands
     if(filters.price !== 'all' && filters.brands.length > 0) {
       call = await fetch(`/api/products/filters?price=${filters.price}&brands=${filters.brands}`);
+      res = await call.json();
+    }
+
+    // Filter only based on price and multiple brands
+    if(filters.price !== 'all' && filters.brands.length > 1) {
+      call = await fetch(`/api/products/filters?price=${filters.price}&brands=${filters.brands[0]}&brands=${filters.brands[1]}&brands=${filters.brands[2]}&brands=${filters.brands[3]}`);
       res = await call.json();
     }
 
