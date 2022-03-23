@@ -52,22 +52,20 @@ const ProductsState = props => {
     return res
   }
 
+  // Fetch all the products on initial load
   useEffect(() => {
     getProducts()
       .then(res => setProducts(res))
       .catch(err => console.log(err))
   }, []);
 
+  // Every time the filters state changes re-render the products based on the filtering
   useEffect(() => {
-    // console.log(filters[0].price.range0to40)
     setProducts(null)
-    getProducts(filters)
+    getProducts()
       .then(res => setProducts(res))
       .catch(err => console.log(err))
-    console.log(filters)
   }, [filters])
-
-  // Filter Products
 
   return (
     <productsContext.Provider value={{

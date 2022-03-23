@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Menu, MenuButton, MenuList, MenuItem, Image } from '@chakra-ui/react';
+import { Menu, MenuButton, MenuList, MenuItem, Image, Button } from '@chakra-ui/react';
+// import { AddIcon } from '@chakra-ui/icons';
 import { productsContext } from '../contexts/productsContext';
 
 const Cart = () => {
 
-  const { cart } = useContext(productsContext);
+  const { cart, dispatchCart } = useContext(productsContext);
 
   return (
     <Menu>
@@ -15,6 +16,8 @@ const Cart = () => {
             <MenuItem key={item._id}>
               <Image boxSize='3rem' borderRadius='full' src={item.imageLink} mr='1rem'></Image>
               {item.name}
+              {/* <AddIcon onClick={() => dispatchCart({type: 'add'})}>Add</AddIcon> */}
+              {/* <Button onClick={() => dispatchCart({type: 'remove'})}>Remove</Button> */}
             </MenuItem>
           ))
         )}
