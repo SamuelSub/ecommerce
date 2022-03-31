@@ -1,10 +1,10 @@
 import React, { useContext} from 'react';
-import { productsContext } from '../contexts/productsContext';
 import { Box, Button, Heading, Image, Stack, Text } from '@chakra-ui/react';
+import { cartContext } from '../contexts/cartContext';
 
 const ProductItem = ({ item }) => {
 
-  const { dispatchCart } = useContext(productsContext);
+  const { dispatchCart } = useContext(cartContext);
 
   return (
     <Box key={item._id} h='100%' boxShadow='xl' borderRadius='sm' align='center'>

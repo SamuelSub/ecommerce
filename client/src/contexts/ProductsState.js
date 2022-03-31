@@ -1,18 +1,15 @@
 import React, { useReducer, useState, useEffect } from 'react';
 import { productsContext } from './productsContext';
-import { reducer } from './cartReducer';
 import { filterReducer } from './filterReducer';
 
 const ProductsState = props => {
 
-  const initialState = [];
   const filterProducts = {
     price: 'all',
     brands: []
   };
 
   const [products, setProducts] = useState();
-  const [cart, dispatchCart] = useReducer(reducer, initialState);
   const [filters, dispatchFilters] = useReducer(filterReducer, filterProducts);
 
   const getProducts = async () => {
@@ -71,8 +68,6 @@ const ProductsState = props => {
     <productsContext.Provider value={{
       products,
       setProducts,
-      cart,
-      dispatchCart,
       filters,
       dispatchFilters
     }}>
