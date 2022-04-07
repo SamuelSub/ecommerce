@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
-import { Menu, MenuButton, MenuList, MenuItem, Image, Button, Heading, Stack, Flex, Spacer, Box, HStack, UnorderedList, ListItem } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { Menu, MenuButton, MenuList, MenuItem, Image, Button, Heading, Flex, Spacer, Box, HStack, UnorderedList, ListItem, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { cartContext } from '../contexts/cartContext';
 
@@ -31,12 +32,18 @@ const Cart = () => {
             <Heading size='sm'>No Items In Your Cart</Heading>
           </MenuItem>
         )}
+        <hr />
        {cart.length > 0 && (
        <MenuItem>
-        <Stack>
-          <Heading size='sm'>Total: {total}</Heading>
-          <Heading size='sm'>View Your Cart</Heading>
-        </Stack>
+          <Stat>
+              <Flex justifyContent='space-between' alignItems='center'>
+                <Link to='/cart'><Heading fontSize='md' color='green.700' fontWeight='bold'>Go To Checkout</Heading></Link>
+                <Box>
+                  <StatLabel>Total</StatLabel>
+                  <StatNumber>{total}</StatNumber>
+                </Box>
+              </Flex>
+          </Stat>
        </MenuItem>)}
       </MenuList>
     </Menu>
