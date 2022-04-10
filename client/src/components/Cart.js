@@ -22,6 +22,7 @@ const Cart = () => {
               <Flex w='15rem' align='center'>
                 <Image boxSize='3rem' borderRadius='full' src={item.imageLink} mr='1rem'></Image>
                 <Heading size='sm'>{item.name}</Heading>
+                <h3>quantity: {item.quantity}</h3>
                 <Spacer />
                 <div onClick={() => handleDelete(item)}><DeleteIcon color='red' cursor='pointer'/></div>
               </Flex>

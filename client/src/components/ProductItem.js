@@ -5,6 +5,8 @@ import { cartContext } from '../contexts/cartContext';
 const ProductItem = ({ item }) => {
 
   const { dispatchCart } = useContext(cartContext);
+  // Set initial value of quantity to 0
+  item.quantity = 0;
 
   return (
     <Box key={item._id} h='100%' boxShadow='xl' borderRadius='sm' align='center'>
