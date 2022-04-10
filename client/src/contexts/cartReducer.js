@@ -1,17 +1,29 @@
 export const reducer = (state, action) => {
   switch (action.type) {
     case 'add':
-      state.map((item, index) => {
-        if(item._id === action.payload._id) {
-          console.log(true)
+      let newItem;
+      let addQuantity = false;
+      state.map((product, index) => {
+        if(product._id === action.payload._id) {
           state.splice(index, 1)
+          addQuantity = true;
+          let count = product.quantity + 1
+          // console.log(`count is: ${count} and payload is: ${product.quantity}`)
+          newItem = {
+            _id: action.payload._id,
+            imageLink: action.payload.imageLink,
+            name: action.payload.name,
+            price: action.payload.price,
+            quantity: count,
+            description: action.payload.description
+          }
         } else {
           console.log(false)
         }
       })
       return [
         ...state,
-        action.payload
+        addQuantity ? newItem : action.payload
       ]
     case 'remove':
       return (

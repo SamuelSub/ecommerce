@@ -16,6 +16,7 @@ const CartState = props => {
     setTotal(sum);
     cart.map(item => sum += item.price);
     setTotal(sum);
+    // console.log(cart)
   }, [cart])
 
   return (
