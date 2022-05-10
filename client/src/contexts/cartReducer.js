@@ -8,12 +8,12 @@ export const reducer = (state, action) => {
           state.splice(index, 1)
           addQuantity = true;
           let count = product.quantity + 1
-          // console.log(`count is: ${count} and payload is: ${product.quantity}`)
+          let newPrice = product.price + action.payload.price;
           newItem = {
             _id: action.payload._id,
             imageLink: action.payload.imageLink,
             name: action.payload.name,
-            price: action.payload.price,
+            price: newPrice,
             quantity: count,
             description: action.payload.description
           }
