@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, MenuButton, MenuList, MenuItem, Image, Button, Heading, Flex, Spacer, Box, HStack, UnorderedList, ListItem, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
+import { Menu, MenuButton, MenuList, MenuItem, Image, Stack, Heading, Flex, Spacer, Box, HStack, UnorderedList, ListItem, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { cartContext } from '../contexts/cartContext';
 
@@ -20,9 +20,11 @@ const Cart = () => {
           cart.map(item => (
             <MenuItem key={item._id} cursor='default'>
               <Flex w='15rem' align='center'>
-                <Image boxSize='3rem' borderRadius='full' src={item.imageLink} mr='1rem'></Image>
-                <Heading size='sm'>{item.name}</Heading>
-                <h3>quantity: {item.quantity}</h3>
+                  <Image boxSize='3rem' borderRadius='full' src={item.imageLink} mr='1rem'></Image>
+                <Stack>
+                  <Heading size='sm'>{item.name}</Heading>
+                  <Heading size='sm'>Quantity: {item.quantity}</Heading>
+                </Stack>
                 <Spacer />
                 <div onClick={() => handleDelete(item)}><DeleteIcon color='red' cursor='pointer'/></div>
               </Flex>
