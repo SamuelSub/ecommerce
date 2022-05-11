@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import FilterProducts from './FilterProducts'
 import ProductList from './ProductList'
-import { Box, Grid, GridItem, UnorderedList } from '@chakra-ui/react'
+import { Box, Grid, GridItem, UnorderedList, Heading } from '@chakra-ui/react'
 import { alertContext } from '../contexts/alertContext'
 
 const Home = () => {
@@ -16,14 +16,11 @@ const Home = () => {
           </Flex> */}
         </UnorderedList>
       </Box>
-      <Box className='hero-image' pt='20' height={300}>
-      
-  <div class="hero-text">
-    <h1>Tech Gadgets for your everyday</h1>
-{/*     
-    <button>Hire me</button> */}
-  </div>
+
+      <Box className='hero-image' pt='20' mb='5rem' height={300}>
+        <Heading className='hero-text'>Tech Gadgets for your everyday</Heading>
       </Box>
+  
       <Grid className='products-container' templateColumns='repeat(4, 1fr)' w='88%' m='auto'>
       
         <GridItem>
