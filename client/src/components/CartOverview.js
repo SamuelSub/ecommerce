@@ -6,7 +6,7 @@ import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import CheckoutForm from './CheckoutForm'
 
-const stripePromise = loadStripe('pk_test_51KyAkuFujeWvGXHOzouN9Ms86wo0yv9y9gmSbmvcjGsUq8TDXSiU8cPLxbdBdSV7unmR3OgIbnIxcnrOMBTJZKS200qGRcEhFS');
+const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
 const CartOverview = () => {
 
