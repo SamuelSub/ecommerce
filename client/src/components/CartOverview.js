@@ -2,10 +2,16 @@ import { Heading, UnorderedList, ListItem, Box, Flex, Image, Spacer, Grid, Stack
 import { cartContext } from '../contexts/cartContext'
 import { DeleteIcon } from '@chakra-ui/icons'
 import React, { useContext } from 'react'
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import CheckoutForm from './CheckoutForm'
+
+const stripePromise = loadStripe('pk_test_51KyAkuFujeWvGXHOzouN9Ms86wo0yv9y9gmSbmvcjGsUq8TDXSiU8cPLxbdBdSV7unmR3OgIbnIxcnrOMBTJZKS200qGRcEhFS');
 
 const CartOverview = () => {
 
   const { cart, dispatchCart, total } = useContext(cartContext);
+  
 
   const handleDelete = item => {
     dispatchCart({ type: 'remove', payload: item._id });
@@ -35,7 +41,7 @@ const CartOverview = () => {
         </UnorderedList>
       </Box>
       <Box>
-        <Heading fontSize='2xl' textAlign='center' py='3rem'>Address Details</Heading>
+        <Heading fontSize='2xl' textAlign='center' py='3rem'>Details</Heading>
         <FormControl isRequired>
           <FormLabel htmlFor='first-name'>First name</FormLabel>
           <Input id='first-name' placeholder='First Name' />
@@ -50,7 +56,9 @@ const CartOverview = () => {
           <FormLabel htmlFor='email'>E-mail</FormLabel>
           <Input id='email' placeholder='E-mail' />
         </FormControl>
-        <Button variant='outline' color='green' w='100%' mt='1rem'>Go To Checkout</Button>
+        <Elements stripe={stripePromise}>
+          <CheckoutForm total={total}/>
+        </Elements>
       </Box>
     </Grid>
   )
