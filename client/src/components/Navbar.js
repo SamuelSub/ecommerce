@@ -19,7 +19,7 @@ const Navbar = () => {
       </Flex>
       <Flex w='100%' bg='gray.400' p='4' boxShadow='lg' position='fixed' top='0' zIndex='50'>
         <Flex w='90%' m='auto' align='space-between' color='white' alignItems='center'>
-          <Text fontSize='2xl'><Link to='/'>Samuel's Shop</Link></Text>
+          <Text fontSize='2xl'><Link to='/'><img src='/img/logo.png' /></Link></Text>
           <Spacer />
             <UnorderedList styleType='none' alignContent='flex'>
               <Flex>
