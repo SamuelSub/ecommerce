@@ -9,11 +9,7 @@ const app = express();
 const path = require('path');
 require('dotenv').config();
 
-app.use(express.static(path.join(__dirname, "client", "build")))
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 
 connectDB();
 
@@ -23,6 +19,12 @@ app.use('/api/products', productsRoute);
 app.use('/api/orders', orderRoute)
 app.use('/api/cart', cartRoute);
 app.use('/api/checkout', checkoutRoute);
+
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 const PORT = 5555 || process.env.PORT;
 
