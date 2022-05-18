@@ -6,9 +6,15 @@ const orderRoute = require('./routes/orderRoute');
 const cartRoute = require('./routes/cartRoute');
 const checkoutRoute = require('./routes/checkoutRoute')
 const app = express();
+const path = require('path');
 require('dotenv').config();
 
-// connect to database
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 connectDB();
 
 app.use(express.json());
