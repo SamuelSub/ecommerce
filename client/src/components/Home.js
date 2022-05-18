@@ -17,7 +17,7 @@ const Home = () => {
       </Box>
 
       <Box className='hero-image' pt='20' mb='5rem' height={300}>
-        <Heading className='hero-text'>Tech Gadgets for your everyday</Heading>
+        <Heading className='hero-text'>Biggest Collection On The Market</Heading>
       </Box>
   
       <Grid className='products-container' templateColumns='repeat(4, 1fr)' w='88%' m='auto'>
