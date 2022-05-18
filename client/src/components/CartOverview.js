@@ -1,4 +1,4 @@
-import { Heading, UnorderedList, ListItem, Box, Flex, Image, Spacer, Grid, Stack, FormControl, FormLabel, Input, Button } from '@chakra-ui/react'
+import { Heading, UnorderedList, ListItem, Box, Flex, Image, Spacer, Grid, Stack, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import { cartContext } from '../contexts/cartContext'
 import { DeleteIcon } from '@chakra-ui/icons'
 import React, { useContext } from 'react'

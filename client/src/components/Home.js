@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import FilterProducts from './FilterProducts'
 import ProductList from './ProductList'
 import { Box, Grid, GridItem, UnorderedList, Heading } from '@chakra-ui/react'
-import { alertContext } from '../contexts/alertContext'
 
 const Home = () => {
   return (

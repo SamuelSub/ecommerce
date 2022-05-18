@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, MenuButton, MenuList, MenuItem, Image, Stack, Heading, Flex, Spacer, Box, HStack, UnorderedList, ListItem, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
+import { Menu, MenuButton, MenuList, MenuItem, Image, Stack, Heading, Flex, Spacer, Box, Stat, StatLabel, StatNumber } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import { cartContext } from '../contexts/cartContext';
 
 const Cart = () => {
 
-  const { cart, dispatchCart, total, setTotal } = useContext(cartContext);
+  const { cart, dispatchCart, total } = useContext(cartContext);
 
   const handleDelete = item => {
     dispatchCart({ type: 'remove', payload: item._id });
